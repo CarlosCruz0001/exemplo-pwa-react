@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import img01 from "./assets/img/img01.jpg"
+import img02 from "./assets/img/img02.jpg"
+import videoSample from "./assets/video/video.mp4"
+import styles from "./App.module.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () =>{
+     return(
+        <div className={styles.container}>
+            <h1 className={styles.title}>Nature</h1>
 
-export default App;
+            <img src={img01} alt="arvores" />
+            <p className={styles.label}>Arvores</p>
+
+            <img src={img02} alt="arvores com montanha" />
+            <p  className={styles.label}>Árvores com montanha</p>
+
+            <video autoPlay={true}>
+                <source src={videoSample} type="video/mp4"/>
+            </video>
+        </div>
+     )
+};
+ export default App;
