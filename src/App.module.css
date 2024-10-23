@@ -1,7 +1,7 @@
 .container{
     display: flex;
     flex-direction: column;
-    padding: 30px 10px;
+    padding: 30px 20px;
     align-items: center;
     color: #fff;
 }
@@ -9,12 +9,14 @@
 .title{
     text-align: center;
     margin-bottom: 20px;
+    font-size: 2rem;
 }
 
 .container img, 
 .container video {
-    width: 100px;
+    width: 80%;
     margin-bottom:  5px;
+    height: 50%;
 }
 
 .container img{
