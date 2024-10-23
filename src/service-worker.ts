@@ -58,19 +58,25 @@ registerRoute(
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
-  ({ request, url }) => 
-    // url.origin === self.location.origin && url.pathname.endsWith('.png'),
-  request.destination === 'image' || request.destination ==='video',
-   // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  ({ request, url }) =>
+    url.origin === self.location.origin &&
+    (url.pathname.endsWith(".png") ||
+      url.pathname.endsWith(".mp4") ||
+      url.pathname.endsWith(".jpg")),
+  //request.destination === 'image' || request.destination ==='video',
+  // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: 'media-cache',
+    cacheName: "media-cache",
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
-      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 }),
-      new CacheableResponsePlugin ( { 
+      new ExpirationPlugin({
+        maxEntries: 50,
+        maxAgeSeconds: 60 * 60 * 24 * 30,
+      }),
+      new CacheableResponsePlugin({
         statuses: [200],
-      })
+      }),
     ],
   })
 );
